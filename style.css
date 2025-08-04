@@ -1,0 +1,146 @@
+#intro{
+    display:grid;
+    grid-template-columns: 2fr 3fr;
+   
+}
+
+#introtxt{
+
+display:flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+}
+
+#f1img > img{
+    width: 100%;
+    height: auto;
+    max-width: 900px;
+    object-fit: cover;
+    transition: all 0.3s ease-in-out;
+}
+
+#introtxt > h1{
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 130px;
+  color: #950101;
+}
+
+#introtxt > p{
+  font-family: "PT Serif", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 20px
+}
+#jumbotron{
+    background-color: #000000;
+    color: #950101;
+  
+}
+
+#headshot{
+    width: 100px;
+    height: 100px;
+   
+}
+
+#myLink {
+    color: white;      
+  
+  }
+
+
+ #jumbotron{
+ font-family: "Arvo", serif;
+  font-weight: 400;
+  font-style: normal;
+  margin-bottom: 150px;
+ }
+
+ #aboutme{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+ }
+
+
+ .abh2{
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 80px;
+  color: #950101;
+ }
+
+ .featurette-heading{
+   color: #950101;
+  font-family: "Lexend", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 546;
+  font-style: normal;
+  font-size:35px ;
+
+ }
+
+ .lead{
+  
+   font-family: "PT Serif", serif;
+  font-weight: 400;
+  font-style: normal;
+ }
+
+
+ #footer{
+  background-color: #000000;
+  color: #950101;
+  height: 150px;
+  font-size: 16px;
+  margin-top: 100px;
+ }
+ #h1font{
+  font-family: "Lexend", sans-serif;
+  font-size: 40px;
+ }
+
+ .btn{
+  background-color: #000000;
+
+  font-family:"Lexend", sans-serif ;
+ }
+#mylink2{
+  color: #950101;
+}
+#contactme{
+  display: flex;
+  flex-direction:row ;
+  justify-content: center;
+  margin-top: 80px;
+}
+
+
+
+@media (max-width: 768px) {
+    #intro {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #introtxt > h1 {
+        font-size: 60px;
+        text-align: center;
+    }
+
+    #introtxt > p {
+        font-size: 16px;
+        text-align: center;
+    }
+
+    #f1img > img {
+        max-width: 90%;
+        height: auto;
+    }
+}
+
