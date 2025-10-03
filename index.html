@@ -1,5 +1,3 @@
- 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,8 +12,501 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Exo+2:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-    
-    <link rel="stylesheet" href="./style.css">
+    <style>
+        :root {
+            --f1-red: #DC143C;
+            --f1-black: #000000;
+            --f1-white: #FFFFFF;
+            --f1-silver: #C0C0C0;
+            --f1-carbon: #1a1a1a;
+            --f1-yellow: #FFD700;
+            --f1-orange: #FF6B00;
+            --f1-blue: #0066FF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--f1-black) 0%, var(--f1-carbon) 100%);
+            color: var(--f1-white);
+            font-family: 'Rajdhani', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .racing-stripes {
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100vh;
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                var(--f1-red) 10%, 
+                var(--f1-white) 20%, 
+                var(--f1-red) 30%, 
+                transparent 100%);
+            animation: raceStripe 3s ease-in-out infinite;
+            z-index: -1;
+            opacity: 0.15;
+            pointer-events: none;
+        }
+
+        @keyframes raceStripe {
+            0%, 100% { left: -100%; }
+            50% { left: 100%; }
+        }
+
+        #hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: radial-gradient(circle at center, rgba(220, 20, 60, 0.2) 0%, transparent 70%);
+        }
+
+        #intro {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+            z-index: 2;
+        }
+
+        #introtxt {
+            text-align: center;
+            position: relative;
+        }
+
+        #introtxt h1 {
+            font-family: 'Orbitron', monospace;
+            font-weight: 700;
+            font-size: clamp(40px, 6vw, 65px);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            background: linear-gradient(45deg, var(--f1-red), var(--f1-white), var(--f1-red));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+            animation: heroGlow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes heroGlow {
+            from { text-shadow: 0 0 20px var(--f1-red); }
+            to { text-shadow: 0 0 40px var(--f1-red), 0 0 60px var(--f1-red); }
+        }
+
+        #introtxt p {
+            font-family: 'Exo 2', sans-serif;
+            font-size: 24px;
+            color: var(--f1-silver);
+            font-weight: 300;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            position: relative;
+            margin-bottom: 40px;
+        }
+
+        #introtxt p::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--f1-red), var(--f1-orange));
+            animation: glow 2s infinite alternate;
+        }
+
+        @keyframes glow {
+            from { box-shadow: 0 0 5px var(--f1-red); }
+            to { box-shadow: 0 0 20px var(--f1-red), 0 0 30px var(--f1-orange); }
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 30px;
+            background: linear-gradient(45deg, var(--f1-red), var(--f1-orange));
+            color: var(--f1-white);
+            text-decoration: none;
+            border-radius: 50px;
+            font-family: 'Exo 2', sans-serif;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(220, 20, 60, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 25px rgba(220, 20, 60, 0.5);
+        }
+
+        #jumbotron {
+            background: linear-gradient(135deg, var(--f1-black) 0%, var(--f1-carbon) 50%, var(--f1-black) 100%);
+            position: relative;
+            margin: 100px 0;
+            border-top: 3px solid var(--f1-red);
+            border-bottom: 3px solid var(--f1-red);
+        }
+
+        #h1font {
+            font-family: 'Orbitron', monospace;
+            font-size: 50px;
+            font-weight: 700;
+            color: var(--f1-red);
+            text-align: center;
+            margin-bottom: 30px;
+            text-shadow: 0 0 20px rgba(220, 20, 60, 0.5);
+        }
+
+        .lead {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 20px;
+            font-weight: 400;
+            line-height: 1.6;
+            color: var(--f1-silver);
+            text-align: center;
+        }
+
+        #myLink {
+            display: inline-block;
+            padding: 15px 40px;
+            background: linear-gradient(45deg, var(--f1-red), var(--f1-orange));
+            color: var(--f1-white);
+            text-decoration: none;
+            font-family: 'Exo 2', sans-serif;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #myLink::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        #myLink:hover::before {
+            left: 100%;
+        }
+
+        #myLink:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(220, 20, 60, 0.4);
+        }
+
+        #aboutme {
+            padding: 100px 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .abh2 {
+            font-family: 'Orbitron', monospace;
+            font-weight: 900;
+            font-size: clamp(50px, 8vw, 80px);
+            color: var(--f1-red);
+            text-align: center;
+            margin-bottom: 80px;
+            position: relative;
+        }
+
+        .abh2::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--f1-red), var(--f1-orange));
+            border-radius: 2px;
+        }
+
+        .featurette {
+            background: linear-gradient(135deg, rgba(220, 20, 60, 0.05) 0%, transparent 100%);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 60px 0;
+            border: 1px solid rgba(220, 20, 60, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .featurette:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(220, 20, 60, 0.2);
+            border-color: rgba(220, 20, 60, 0.4);
+        }
+
+        .featurette-heading {
+            font-family: 'Exo 2', sans-serif;
+            font-weight: 700;
+            font-size: 36px;
+            color: var(--f1-red);
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        /* Projects Section */
+        #projects {
+            padding: 100px 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .project-card {
+            background: linear-gradient(135deg, rgba(220, 20, 60, 0.05) 0%, transparent 100%);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 40px 0;
+            border: 1px solid rgba(220, 20, 60, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(220, 20, 60, 0.2);
+            border-color: rgba(220, 20, 60, 0.4);
+        }
+
+        .project-title {
+            font-family: 'Exo 2', sans-serif;
+            font-weight: 700;
+            font-size: 32px;
+            color: var(--f1-red);
+            margin-bottom: 15px;
+        }
+
+        .project-tech {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 16px;
+            color: var(--f1-orange);
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        .project-date {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 14px;
+            color: var(--f1-silver);
+            margin-bottom: 20px;
+            opacity: 0.8;
+        }
+
+        .project-description {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 18px;
+            color: var(--f1-silver);
+            line-height: 1.6;
+        }
+
+        .project-description li {
+            margin-bottom: 12px;
+        }
+
+        .project-link {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 30px;
+            background: linear-gradient(45deg, var(--f1-red), var(--f1-orange));
+            color: var(--f1-white);
+            text-decoration: none;
+            border-radius: 50px;
+            font-family: 'Exo 2', sans-serif;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+        .project-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(220, 20, 60, 0.4);
+            color: var(--f1-white);
+        }
+
+        #contactme {
+            text-align: center;
+            margin: 100px 0;
+        }
+
+        .btn {
+            background: linear-gradient(45deg, var(--f1-red), var(--f1-orange));
+            border: none;
+            padding: 20px 50px;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            transform: translate(-50%, -50%);
+        }
+
+        .btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(220, 20, 60, 0.4);
+        }
+
+        #mylink2 {
+            color: var(--f1-white);
+            text-decoration: none;
+            font-family: 'Exo 2', sans-serif;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            z-index: 2;
+        }
+
+        #footer {
+            background: linear-gradient(135deg, var(--f1-black) 0%, var(--f1-carbon) 100%);
+            border-top: 3px solid var(--f1-red);
+            margin-top: 100px;
+            padding: 40px 0;
+        }
+
+        #footer .container {
+            max-width: 1400px;
+        }
+
+        footer {
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 400;
+            color: var(--f1-silver);
+            text-align: center;
+        }
+
+        .speed-lines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -2;
+        }
+
+        .speed-line {
+            position: absolute;
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--f1-red), transparent);
+            opacity: 0.1;
+            animation: speedLine 3s linear infinite;
+        }
+
+        @keyframes speedLine {
+            0% {
+                transform: translateX(-100vw);
+                opacity: 0;
+            }
+            50% {
+                opacity: 0.1;
+            }
+            100% {
+                transform: translateX(100vw);
+                opacity: 0;
+            }
+        }
+
+        .scroll-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--f1-red), var(--f1-orange));
+            z-index: 1000;
+            transition: width 0.1s ease;
+        }
+
+        @media (max-width: 768px) {
+            #intro {
+                padding: 20px;
+            }
+
+            #introtxt h1 {
+                font-size: clamp(32px, 10vw, 50px);
+            }
+
+            #introtxt p {
+                font-size: 18px;
+                letter-spacing: 1.5px;
+            }
+
+            .featurette {
+                padding: 30px 20px;
+            }
+
+            .featurette-heading {
+                font-size: 28px;
+            }
+
+            .lead {
+                font-size: 18px;
+            }
+
+            .project-card {
+                padding: 30px 20px;
+            }
+
+            .project-title {
+                font-size: 26px;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -33,7 +524,7 @@
             <div id="introtxt">
                 <h1>Veera Vulavakayala</h1>
                 <p>Full Stack Developer | Computer Science Student</p>
-                <a href="#jumbotron" class="cta-button">Let's Race Together</a>
+                <a href="#jumbotron" class="cta-button">Explore My Work</a>
             </div>
         </div>
     </section>
@@ -42,14 +533,15 @@
         <div class="my-5">
             <div class="p-5 text-center">
                 <div class="container py-5">
-                    <h1 id="h1font">Racing Towards Excellence</h1>
+                    <h1 id="h1font">About Me</h1>
                     <p class="col-lg-8 mx-auto lead">
-                        I'm a Computer Science student at USF with the precision of an F1 engineer and the speed of a racing driver. 
-                        Just like in Formula 1, I believe in continuous improvement, split-second decision making, and pushing the limits of what's possible. 
-                        Currently seeking full-time opportunities or internships where I can apply my technical skills at championship level.
+                        I'm a Computer Science student at USF passionate about building innovative web applications. 
+                        I specialize in full-stack development with expertise in React, Node.js, and modern web technologies. 
+                        Currently seeking full-time opportunities or internships where I can contribute to impactful projects 
+                        and continue growing as a developer.
                     </p>
                     <p style="margin-top: 40px; color: var(--f1-silver); font-weight: 600;">
-                        Check out my championship record
+                        Check out my resume
                     </p>
                     <a id="myLink" href="https://sasi2.github.io/html-portfolio/">View Resume</a>
                 </div>
@@ -58,20 +550,19 @@
     </section>
 
     <section id="aboutme">
-        <h2 class="abh2">Driver Profile</h2>
+        <h2 class="abh2">Skills & Interests</h2>
 
         <div class="row featurette mx-3">
             <div class="col-md-12">
                 <h2 class="featurette-heading text-center">
-                     Technical Engineering & Development
+                    Technical Development
                 </h2>
                 <p class="lead text-center">
-                    Like an F1 engineer perfecting aerodynamics, I'm constantly fine-tuning my development skills. 
-                    My passion for coding mirrors the relentless pursuit of perfection in Formula 1, every line of code 
-                    is optimized for performance, every solution engineered for maximum efficiency. From frontend precision 
-                    to backend power, I build applications that perform like championship-winning race cars: fast, reliable, 
-                    and built to last. The pit stop never ends when it comes to learning new technologies and pushing the 
-                    boundaries of what's possible in software development.
+                    I'm passionate about creating efficient, scalable web applications. My development approach focuses on 
+                    writing clean, maintainable code and leveraging modern frameworks to build seamless user experiences. 
+                    From frontend design to backend architecture, I enjoy tackling complex problems and continuously learning 
+                    new technologies. Whether it's integrating AI capabilities, designing responsive interfaces, or optimizing 
+                    database performance, I strive to deliver high-quality solutions that make a difference.
                 </p>
             </div>
         </div>
@@ -79,22 +570,50 @@
         <div class="row featurette mx-3">
             <div class="col-md-12">
                 <h2 class="featurette-heading text-center">
-                    Racing Passion & Entertainment
+                    Interests & Entertainment
                 </h2>
                 <p class="lead text-center">
-                    When I'm not coding at lightning speed, you'll find me glued to the screen watching the masters of speed and strategy. 
-                    Cricket matches that go down to the wire, football (soccer) games with last-minute goals, and Formula 1 races where 
-                    milliseconds decide championships - these are my fuel for inspiration. And let's be honest, Telugu cinema is simply 
-                    unmatched in storytelling and entertainment value. Just like how each F1 team brings their unique engineering approach, 
-                    each of these passions brings a different perspective to my life and work.
+                    When I'm not coding, I enjoy watching cricket matches, football (soccer) games, and Formula 1 races. 
+                    I'm also a fan of Telugu cinema and appreciate great storytelling across different mediums. These interests 
+                    keep me balanced and often inspire creative approaches to problem-solving in my development work. 
+                    I believe that diverse interests help bring fresh perspectives to technical challenges.
                 </p>
             </div>
         </div>
     </section>
 
+    <section id="projects">
+        <h2 class="abh2">Projects</h2>
+
+        <div class="project-card">
+            <h3 class="project-title">AI Job Assistant</h3>
+            <p class="project-tech">React.js, Node.js, Express.js, Google Gemini API, JavaScript ES6, Bootstrap</p>
+            <p class="project-date">August 2025 – September 2025</p>
+            <ul class="project-description">
+                <li>Built a full-stack web application with React frontend and Node.js/Express backend, integrating Google Gemini AI for resume analysis and career guidance.</li>
+                <li>Developed a skill-matching system to compare resumes against job descriptions, helping users identify gaps and improve their applications.</li>
+                <li>Created a responsive UI using Bootstrap, modern CSS, and glassmorphism effects for an engaging user experience.</li>
+                <li>Deployed the frontend on Netlify and backend on Railway with seamless API integration.</li>
+            </ul>
+            <a href="https://timely-custard-661bde.netlify.app/" target="_blank" class="project-link">View Live Project</a>
+        </div>
+
+        <div class="project-card">
+            <h3 class="project-title">Quit Porn</h3>
+            <p class="project-tech">React.js, Node.js, Express.js, MongoDB, EJS, CSS Grid, Flexbox</p>
+            <p class="project-date">June 2025 – August 2025</p>
+            <ul class="project-description">
+                <li>Built a full-stack application to help users break addictive habits through habit tracking, goal setting, and progress visualization dashboards.</li>
+                <li>Developed a responsive React frontend with an Express.js backend and MongoDB database, implementing RESTful API architecture.</li>
+                <li>Added email notification features and offline tracking capabilities via local storage for uninterrupted user experience.</li>
+                <li>Designed an intuitive UI with CSS Grid and Flexbox for optimal user engagement and accessibility.</li>
+            </ul>
+        </div>
+    </section>
+
     <section id="contactme">
         <button class="btn d-inline-flex align-items-center" type="button">
-            <a id="mylink2" href="https://sasi2.github.io/html-portfolio/public/contactme.html">Enter the Pit Lane</a>
+            <a id="mylink2" href="https://sasi2.github.io/html-portfolio/public/contactme.html">Get In Touch</a>
         </button>
     </section>
 
@@ -102,9 +621,9 @@
         <div class="container">
             <footer class="d-flex flex-wrap justify-content-center align-items-center py-3 my-4">
                 <div class="text-center">
-                    <p>© 2025 Veera Saideep Sasank Vulavakayala </p>
+                    <p>© 2025 Veera Saideep Sasank Vulavakayala</p>
                     <p style="font-size: 14px; opacity: 0.7; margin-top: 10px;">
-                        "The way to get started is to quit talking and begin doing." 
+                        "The way to get started is to quit talking and begin doing."
                     </p>
                 </div>
             </footer>
@@ -112,8 +631,37 @@
     </section>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
-    <script src="./script.js"></script>
+    <script>
+        // Scroll indicator
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('scrollIndicator').style.width = scrolled + '%';
+        });
+
+        // Add smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Dynamic racing stripe animation
+        setInterval(() => {
+            const stripe = document.querySelector('.racing-stripes');
+            if (stripe) {
+                stripe.style.animationDuration = (Math.random() * 2 + 2) + 's';
+            }
+        }, 5000);
+    </script>
 </body>
 </html>
-
 
